@@ -22,7 +22,7 @@ function chi_wc_interswitch_webpay_init() {
 	/**
  	 * Gateway class
  	 */
-	class WC_chi_webpay_Gateway extends WC_Payment_Gateway {
+	class WC_Chi_Webpay_Gateway extends WC_Payment_Gateway {
 
 		public function __construct() {
 
@@ -71,7 +71,7 @@ function chi_wc_interswitch_webpay_init() {
 
 			$this->query_url 				= $this->testmode === 'yes' ? $this->test_query_url : $this->live_query_url;
 
-			$this->redirect_url        		= WC()->api_request_url( 'WC_chi_webpay_Gateway' );
+			$this->redirect_url        		= WC()->api_request_url( 'WC_Chi_Webpay_Gateway' );
         	$this->method_title     		= 'Interswitch Webpay';
         	$this->method_description  		= 'MasterCard, Verve Card and Visa Card accepted';
 
@@ -181,21 +181,21 @@ function chi_wc_interswitch_webpay_init() {
 				'product_id' => array(
 					'title' 		=> 'Product ID',
 					'type' 			=> 'text',
-					'description' 	=> 'Product Identifier for PAYDirect.' ,
+					'description' 	=> 'Product Identifier for PAYDirect. - supplied by Interswitch' ,
 					'default' 		=> '',
 	    			'desc_tip'      => false
 				),
 				'pay_item_id' => array(
 					'title' 		=> 'Pay Item ID',
 					'type' 			=> 'text',
-					'description' 	=> 'PAYDirect Payment Item ID' ,
+					'description' 	=> 'PAYDirect Payment Item ID - supplied by Interswitch' ,
 					'default' 		=> '',
         			'desc_tip'      => false
 				),
 				'mac_key' => array(
 					'title' 		=> 'Mac Key',
 					'type' 			=> 'text',
-					'description' 	=> 'Your MAC Key' ,
+					'description' 	=> 'Your MAC Key - supplied by Interswitch' ,
 					'default' 		=> '',
         			'desc_tip'      => false
 				),
@@ -571,11 +571,11 @@ function chi_wc_interswitch_webpay_init() {
 	/**
  	* Add Webpay Gateway to WC
  	**/
-	function chi_wc_add_webay_gateway( $methods ) {
-		$methods[] = 'WC_chi_webpay_Gateway';
+	function chi_wc_add_webpay_gateway( $methods ) {
+		$methods[] = 'WC_Chi_Webpay_Gateway';
 		return $methods;
 	}
-	add_filter( 'woocommerce_payment_gateways', 'chi_wc_add_webay_gateway' );
+	add_filter( 'woocommerce_payment_gateways', 'chi_wc_add_webpay_gateway' );
 
 
 	/**
@@ -634,9 +634,9 @@ function chi_wc_interswitch_webpay_init() {
 
 	//transactions log
         
-        add_action('admin_menu', 'isw_tranactions_log');
+        add_action('admin_menu', 'isw_transactions_log');
  
-        function isw_tranactions_log() {
+        function isw_transactions_log() {
  
         add_menu_page('Webpay Requery', 'Webpay Requery', 'administrator', 'isw_logs', 'webpay_logs');
  
@@ -644,7 +644,7 @@ function chi_wc_interswitch_webpay_init() {
 
     function webpay_logs(){
 
-         echo '<form action=" '. WC()->api_request_url( 'WC_chi_webpay_Gateway' ). '" method="post" id="webpay_requery_form" target="_top">
+         echo '<form action=" '. WC()->api_request_url( 'WC_Chi_Webpay_Gateway' ). '" method="post" id="webpay_requery_form" target="_top">
 
 					 <div class="form-group">
                         <div class="input-icon right">
@@ -679,7 +679,7 @@ function chi_wc_interswitch_webpay_init() {
 		if ( 'yes' == $webpay_test_mode ) {
 	    ?>
 		    <div class="update-nag">
-		        Interswitch Webpay testmode is still enabled, Click <a href="<?php echo get_bloginfo('wpurl') ?>/wp-admin/admin.php?page=wc-settings&tab=checkout&section=WC_chi_webpay_Gateway">here</a> to disable it when you want to start accepting live payment on your site.
+		        Interswitch Webpay testmode is still enabled, Click <a href="<?php echo get_bloginfo('wpurl') ?>/wp-admin/admin.php?page=wc-settings&tab=checkout&section=WC_Chi_Webpay_Gateway">here</a> to disable it when you want to start accepting live payment on your site.
 		    </div>
 	    <?php
 		}
