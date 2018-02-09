@@ -644,7 +644,7 @@ function chi_wc_interswitch_webpay_init() {
 
     function webpay_logs(){
 
-         echo '<form action=" '. WC()->api_request_url( 'WC_Chi_Webpay_Gateway' ). '" method="post" id="webpay_requery_form" target="_top">
+         echo '<form action=" '. WC()->api_request_url( 'WC_chi_webpay_Gateway' ). '" method="post" id="webpay_requery_form" target="_top">
 
 					 <div class="form-group">
                         <div class="input-icon right">
