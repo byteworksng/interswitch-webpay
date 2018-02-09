@@ -32,14 +32,14 @@ To install this wordpress plugin,
 2. 	Login to your WordPress Admin. Click on "Plugins > Add New" from the left hand menu.
 3.  Click on the "Upload" option, then click "Choose File" to select the zip file from your computer. Once selected, press "OK" and press the "Install Now" button.
 4.  Activate the plugin.
-7.	Configure your "Payscrow Premuim Escrow Service" settings. See below for details.
+7.	Configure your "WebPay" settings. See below for details.
 
 ### Alternate Method ###
 1. Download the plugin zip archive and 
 2. extract this archive and 
 3. drag and drop or copy and paste the extracted folder into your wordpress plugins directory located at the "wp-content" folder in your wordpress install folder.
 4. Login to your WordPress Admin. Click on "Plugins"
-5. Locate and activate the Payscrow Escrow service plugin
+5. Locate and activate the Interswitch Webpay plugin
 
 ## Configuration ##
 Minimal config is required to get up and running. Simply go to __WooCommerce > Settings__ from the left hand menu, then click "Checkout" from the top tab. You should see __"WebPay"__ as an option at the top of the screen. Click on it to configure the payment gateway.
